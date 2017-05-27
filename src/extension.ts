@@ -95,7 +95,7 @@ class SyntaxChecker {
     }
 
     handleOutput(stdout: string, diags) {
-        let re: RegExp = new RegExp(/^(..[^:\r\n~$%^]+):(\d+):(\d+): (error|warning): (.*)$/, 'gmi');
+        let re: RegExp = new RegExp(/^(..[^:\r\n~$%^]+):(\d+):(\d+): (fatal error|error|warning): (.*)$/, 'gmi');
         var arr: RegExpExecArray;
         while (arr = re.exec(stdout)) {
             var range = new vscode.Range(Math.max(+arr[2]-1, 0), Math.max(+arr[3]-1, 0), Math.max(+arr[2]-1, 0), +arr[3]);
